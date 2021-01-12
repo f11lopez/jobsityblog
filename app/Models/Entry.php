@@ -17,7 +17,7 @@ class Entry extends Model
   */
   protected $fillable = [
     'title',
-    'content',
+    'body',
     'user_id'
   ];
 

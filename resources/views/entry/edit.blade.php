@@ -21,10 +21,10 @@
                 </div>
               </div>
               <div class="form-group row">
-                <label for="content" class="col-md-4 col-form-label text-md-right text-success">{{ __('Body') }}</label>
+                <label for="body" class="col-md-4 col-form-label text-md-right text-success">{{ __('Body') }}</label>
                 <div class="col-md-6">
-                  <textarea id="content" class="form-control @error('content') is-invalid @enderror" name="content" rows="5" required>{{ $entry->content }}</textarea>
-                  @error('content')
+                  <textarea id="body" class="form-control @error('body') is-invalid @enderror" name="body" rows="5" required>{{ $entry->body }}</textarea>
+                  @error('body')
                     <span class="invalid-feedback" role="alert">
                       <strong>{{ $message }}</strong>
                     </span>

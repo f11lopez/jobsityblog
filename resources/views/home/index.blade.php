@@ -15,7 +15,7 @@
                   <p class="card-text text-success mb-1">
                     <big class="font-weight-bold text-dark">{{ $entry->title }}</big> <small class="text-dark">({{ date('H:i e \o\n d/m/Y', strtotime($entry->created_at)) }})</small>
                   </p>
-                  <p class="card-text mb-1">{{ \Illuminate\Support\Str::limit($entry->content, 50, $end='...') }}</p>
+                  <p class="card-text mb-1">{{ \Illuminate\Support\Str::limit($entry->body, 50, $end='...') }}</p>
                   <div class="row">
                     &nbsp;&nbsp;&nbsp;&nbsp;
                     <div class="col-xs-6"><a href="{{ route('entry.show',[$entry->id]) }}" class="btn btn-outline-success btn-sm" role="button">{{ __('Show') }}</a></div>

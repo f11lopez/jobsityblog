@@ -49,13 +49,13 @@ class EntryController extends Controller
     // Validate data
     $validatedData = $request->validate([
       'title' => ['required', 'max:255'],
-      'content' => ['required']
+      'body' => ['required']
     ]);
     
     // Save new entry with validated data
     $entry = Entry::create([
       'title' => $validatedData['title'],
-      'content' => $validatedData['content'],
+      'body' => $validatedData['body'],
       'user_id' => auth()->user()->id
     ]);
     
@@ -130,13 +130,13 @@ class EntryController extends Controller
     // Validate data
     $validatedData = $request->validate([
       'title' => ['required', 'max:255'],
-      'content' => ['required']
+      'body' => ['required']
     ]);
     
     // Update entry with validated data
     $entry = Entry::findOrFail($request->id);
     $entry->title = $validatedData['title'];
-    $entry->content = $validatedData['content'];
+    $entry->body = $validatedData['body'];
     $entry->save();
 
     return redirect()->route('home');
@@ -155,12 +155,12 @@ class EntryController extends Controller
     // Validate data
     $validatedData = $request->validate([
       'title' => ['required', 'max:255'],
-      'content' => ['required']
+      'body' => ['required']
     ]);
     
     // Update entry with validated data
     $entry->title = $validatedData['title'];
-    $entry->content = $validatedData['content'];
+    $entry->body = $validatedData['body'];
     $entry->save();
 
     return redirect()->route('home');

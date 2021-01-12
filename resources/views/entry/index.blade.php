@@ -29,7 +29,7 @@
                       <a href="{{ route('entries.show',[$entry->id]) }}">{{ $entry->title }}</a>
                     </h4>
                     <p class="list-group-item-text">
-                      {{ $entry->content }}
+                      {{ $entry->body }}
                     </p>
                     @auth
                       @if ($author_id === Auth::user()->id)
