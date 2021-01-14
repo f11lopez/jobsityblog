@@ -27,6 +27,9 @@ Route::resource('entry', 'EntryController');
 // Auth Routes
 Auth::routes();
 
+//Test route
+Route::get('/test', [App\Http\Controllers\TestController::class, 'getUserID'])->name('test');
+
 //Show the form for creating a new entry
 //Route::get('/create', [App\Http\Controllers\EntryController::class, 'create'])->name('create');
 
