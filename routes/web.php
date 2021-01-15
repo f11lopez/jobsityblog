@@ -21,6 +21,8 @@ Route::get('/', function () {
 //Home route displaying user's entries
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::get('/home/{pagination_token}', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 //CRUD for entry
 Route::resource('entry', 'EntryController');
 

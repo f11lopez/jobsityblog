@@ -26,7 +26,7 @@ class HomeController extends Controller
    *
    * @return \Illuminate\Contracts\Support\Renderable
   */
-  public function index(Request $request)
+  public function index(Request $request, $pagination_token=false)
   {
     $user_id = auth()->user()->id;
     $user_name = auth()->user()->name;
@@ -36,12 +36,12 @@ class HomeController extends Controller
     $oEntries = Entry::where('user_id', $user_id)->orderBy('created_at','desc')->get();
     
     // Get twitter timeline
-    $aTwitterTimeline = $this->getTwitterTimelineByUserID($twitter_userID);
+    $aTwitterTimeline = $this->getTwitterTimelineByUserID($twitter_userID,$pagination_token);
     
     // Render the view with all the author's entries
     return view( 'home.index', [ 'entriesTitle' => 'My Blog Entries' . ' (' . count($oEntries) . ')',
                                  'entries' => $oEntries,
-                                 'tweetsTitle' => 'My Twitter Entries' . ' (' . count($aTwitterTimeline) . ')',
+                                 'tweetsTitle' => 'My Twitter Entries',
                                  'tweets' => $aTwitterTimeline ] );
   }
 

@@ -36,7 +36,7 @@
           @endif
         </div>
         <div class="card-footer bg-transparent border-0">
-          <p class="card-text"><small class="text-success"><a href="{{ route('entry.create') }}">{{ __('Create a Blog Entry') }}</a></small></p>
+          <p class="card-text"><small><a class="text-success" href="{{ route('entry.create') }}">{{ __('Create a Blog Entry') }}</a></small></p>
         </div>
       </div>
       
@@ -44,11 +44,8 @@
         <div class="card-body">
           <h5 class="card-title text-primary">{{ $tweetsTitle }}</h5>
           <ul class="list-group">
-            @foreach($tweets as $tweet)
+            @foreach($tweets['data'] as $tweet)
               <li class="list-group-item border-primary">
-                <p class="card-text text-primary mb-1">
-                  <small class="text-dark">{{ date('H:i e \o\n d/m/Y', strtotime($tweet['created_at'])) }}</small>
-                </p>
                 <p class="card-text mb-1">{{ \Illuminate\Support\Str::limit($tweet['text'], 50, $end='...') }}</p>
                 <div class="row">
                   &nbsp;&nbsp;&nbsp;&nbsp;
@@ -61,12 +58,21 @@
                       <button type="submit" class="btn btn-outline-danger btn-sm">{{ __('Hide') }}</button>
                     </form>
                   </div>
+                  &nbsp;
+                  <small class="text-primary">{{ date('H:i e \o\n d/m/Y', strtotime($tweet['created_at'])) }}</small>
                 </div>
               </li>
             @endforeach
           </ul>
         </div>
-        <div class="card-footer bg-transparent border-0"><p class="card-text"><small class="text-primary">No login needed.</small></p></div>
+        <div class="card-footer bg-transparent border-0">
+          @if (isset($tweets['meta']['previous_token']))
+            <a href="{{ route('home',[$tweets['meta']['previous_token']]) }}" class="btn btn-outline-primary btn-sm" role="button">&laquo; Previous</a>
+          @endif
+          @if (isset($tweets['meta']['next_token']))
+            <a href="{{ route('home',[$tweets['meta']['next_token']]) }}" class="btn btn-outline-primary btn-sm" role="button">Next &raquo;</a>
+          @endif
+        </div>
       </div>
     </div>
   </div>

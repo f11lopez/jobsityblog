@@ -35,17 +35,26 @@ trait TwitterTrait {
    *
    * @return array or false
   */
-  public function getTwitterTimelineByUserID($twitterUserID)
+  public function getTwitterTimelineByUserID($twitterUserID, $pagination_token=false)
   {
-    $endpoint_request = str_replace('{{userid}}',$twitterUserID,$this->endpoint_timeline);
+    $endpoint_request = $pagination_token ? str_replace('{{userid}}',$twitterUserID,$this->endpoint_timeline) . '&pagination_token=' . $pagination_token : str_replace('{{userid}}',$twitterUserID,$this->endpoint_timeline);
     $aResponse = Http::withToken(env('TWITTER_BEARER_TOKEN', false))->get($endpoint_request)->json();
     //success
     if (isset($aResponse['data'])) {
-      return $aResponse['data'];
+      return $aResponse;
     }
     //failure
     else {
-      return false;
+      $endpoint_request = str_replace('{{userid}}',$twitterUserID,$this->endpoint_timeline);
+      $aResponse = Http::withToken(env('TWITTER_BEARER_TOKEN', false))->get($endpoint_request)->json();
+      //success
+      if (isset($aResponse['data'])) {
+        return $aResponse;
+      }
+      //failure
+      else {
+        return false;
+      }
     }
   }
   
@@ -60,7 +69,7 @@ trait TwitterTrait {
     $aResponse = Http::withToken(env('TWITTER_BEARER_TOKEN', false))->get($endpoint_request)->json();
     //success
     if (isset($aResponse['data'])) {
-      if ($aResponse['includes']['users'][0]) {
+      if (isset($aResponse['includes']['users'][0])) {
         $aResponse['data']['user'] = $aResponse['includes']['users'][0];
       }
       return $aResponse['data'];
