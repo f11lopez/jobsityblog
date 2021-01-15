@@ -24,11 +24,14 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 //CRUD for entry
 Route::resource('entry', 'EntryController');
 
+//CRUD for twitter
+Route::resource('tweet', 'TweetController');
+
 // Auth Routes
 Auth::routes();
 
 //Test route
-Route::get('/test', [App\Http\Controllers\TestController::class, 'getUserID'])->name('test');
+Route::get('/test', [App\Http\Controllers\TestController::class, 'getUserTimeline'])->name('test');
 
 //Show the form for creating a new entry
 //Route::get('/create', [App\Http\Controllers\EntryController::class, 'create'])->name('create');

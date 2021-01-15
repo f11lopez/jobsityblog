@@ -13,7 +13,7 @@
               @foreach($entries as $entry)
                 <li class="list-group-item border-success">
                   <p class="card-text text-success mb-1">
-                    <big class="font-weight-bold text-dark">{{ $entry->title }}</big> <small class="text-dark">({{ date('H:i e \o\n d/m/Y', strtotime($entry->created_at)) }})</small>
+                    <big class="font-weight-bold text-dark">{{ $entry->title }}</big> <small class="text-dark">{{ date('H:i e \o\n d/m/Y', strtotime($entry->created_at)) }}</small>
                   </p>
                   <p class="card-text mb-1">{{ \Illuminate\Support\Str::limit($entry->body, 50, $end='...') }}</p>
                   <div class="row">
@@ -43,10 +43,28 @@
       <div class="card border-primary mb-2">
         <div class="card-body">
           <h5 class="card-title text-primary">{{ $tweetsTitle }}</h5>
-          <p class="card-text">Perform currency exchange by answering the questions the Chatbot will ask you.</p>
-          <p class="card-text">Please check the list of supported currency codes below.</p>
-          <p class="card-text mb-1">Type <medium class="font-weight-bold">convert</medium> or <medium class="font-weight-bold">exchange</medium> to start the process.</p>
-          <p class="card-text mb-1">Type <medium class="font-weight-bold">exit</medium> to quit the conversation.</p>
+          <ul class="list-group">
+            @foreach($tweets as $tweet)
+              <li class="list-group-item border-primary">
+                <p class="card-text text-primary mb-1">
+                  <small class="text-dark">{{ date('H:i e \o\n d/m/Y', strtotime($tweet['created_at'])) }}</small>
+                </p>
+                <p class="card-text mb-1">{{ \Illuminate\Support\Str::limit($tweet['text'], 50, $end='...') }}</p>
+                <div class="row">
+                  &nbsp;&nbsp;&nbsp;&nbsp;
+                  <div class="col-xs-6"><a href="{{ route('tweet.show',[$tweet['id']]) }}" class="btn btn-outline-primary btn-sm" role="button">{{ __('Show') }}</a></div>
+                  &nbsp;
+                  <div class="col-xs-6">
+                    <form method="POST" action="{{ route('entry.destroy',[$tweet['id']]) }}">
+                      @csrf
+                      <input type="hidden" id="_method" name="_method" value="DELETE" />
+                      <button type="submit" class="btn btn-outline-danger btn-sm">{{ __('Hide') }}</button>
+                    </form>
+                  </div>
+                </div>
+              </li>
+            @endforeach
+          </ul>
         </div>
         <div class="card-footer bg-transparent border-0"><p class="card-text"><small class="text-primary">No login needed.</small></p></div>
       </div>

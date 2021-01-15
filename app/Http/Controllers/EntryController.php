@@ -88,7 +88,7 @@ class EntryController extends Controller
     return view('entry.show', [
       'entry' => $entry
     ]);
-  }  
+  }
   
   /**
    * Show the form for editing the specified resource.
