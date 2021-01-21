@@ -68,13 +68,14 @@
         <div class="card-footer bg-transparent border-0">
           @if ( isset($tweets['meta']['previous_token']) )
             @if ( $tweets['meta']['first_page_newest_id'] !== $tweets['meta']['newest_id'] )
-              <a href="{{ route('twitter_timeline',[$tweets['meta']['previous_token']]) }}" class="btn btn-outline-primary btn-sm" role="button">&laquo; Previous</a>
+              <a href="{{ route('home') }}" class="btn btn-outline-primary btn-sm" role="button">&#8962; Home</a>
+              <a href="{{ route('twitter_timeline',[$tweets['meta']['previous_token']]) }}" class="btn btn-outline-primary btn-sm" role="button">&#171; Previous</a>
             @else
               <a href="{{ route('home') }}" class="btn btn-outline-primary btn-sm" role="button">Check for newer Tweets</a>
             @endif
           @endif
           @if ( isset($tweets['meta']['next_token']) )
-            <a href="{{ route('twitter_timeline',[$tweets['meta']['next_token']]) }}" class="btn btn-outline-primary btn-sm" role="button">Next &raquo;</a>
+            <a href="{{ route('twitter_timeline',[$tweets['meta']['next_token']]) }}" class="btn btn-outline-primary btn-sm" role="button">Next &#187;</a>
           @endif
         </div>
       </div>

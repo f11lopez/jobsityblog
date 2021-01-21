@@ -6673,14 +6673,6 @@ a.close.disabled {
 
 .carousel {
   position: relative;
-  width:100%;
-  /*
-  align-content: center !important;
-  align-items: center !important;
-  justify-content: center !important;
-  align-self: center !important;
-  text-align: center !important;
-  */
 }
 
 .carousel.pointer-event {
@@ -6708,10 +6700,6 @@ a.close.disabled {
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
   transition: transform 0.6s ease-in-out;
-}
-
-.carousel-inner > .carousel-item > img {
-  height: 50vh;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -10913,5 +10901,9 @@ a.text-dark:focus {
     color: inherit;
     border-color: #dee2e6;
   }
+}
+
+.carousel-item {
+  height: 50vh;
 }
 
