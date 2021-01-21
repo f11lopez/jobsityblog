@@ -65,11 +65,11 @@
               <div class="row">
                 &nbsp;&nbsp;&nbsp;&nbsp;
                 <p class="card-text mb-1">
-                  <a class="btn btn-light btn-sm" role="button" href="{{ url()->previous() }}">&#171; {{ __('Back') }}</a>
+                  <a class="btn btn-light btn-sm" role="button" href="{{ url()->previous() }}">&laquo; {{ __('Back') }}</a>
                 </p>
                 &nbsp;
                 <p class="card-text mb-1">
-                  <a class="btn btn-light btn-sm" role="button" href="https://twitter.com/{{ $tweet['user']['username'] }}/status/{{ $tweet['id'] }}" target="_blank">{{ __('Show in Twitter') }} &#187;</a>
+                  <a class="btn btn-light btn-sm" role="button" href="https://twitter.com/{{ $tweet['user']['username'] }}/status/{{ $tweet['id'] }}" target="_blank">{{ __('Show in Twitter') }}</a>
                 </p>
               </div>
             </div>

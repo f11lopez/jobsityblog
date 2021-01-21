@@ -6,14 +6,16 @@
       <div class="col-md-8">
         <div class="card border-success">
           <div class="card-header bg-success">
-            <big class="text-white">{{ $entry->title }}</big>
+            <big class="col-md-4 font-weight-bold text-white">{{ $entry->title }}</big>
+            <small class="text-white">{{ date('H:i e \o\n d/m/Y', strtotime($entry->created_at)) }}</small>
           </div>
           <div class="card-body">
             <p class="card-text">{{ $entry->body }}</p>
           </div>
-          <div class="card-footer bg-transparent border-0">
-            <p class="card-text"><small class="text-success">{{ date('H:i e \o\n d/m/Y', strtotime($entry->created_at)) }}</small></p>
-            <p class="card-text mb-1"><a href="{{ url()->previous() }}" class="btn btn-outline-success btn-sm" role="button">&#171; {{ __('Back') }}</a></p>
+          <div class="card-footer bg-success">
+            <p class="card-text mb-1">
+              <a class="btn btn-light btn-sm" role="button" href="{{ url()->previous() }}">&laquo; {{ __('Back') }}</a>
+            </p>
           </div>
         </div>
       </div>

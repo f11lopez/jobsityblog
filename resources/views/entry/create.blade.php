@@ -33,6 +33,7 @@
               </div>
               <div class="form-group row mb-0">
                 <div class="col-md-6 offset-md-4">
+                  <a class="btn btn-success" role="button" href="{{ url()->previous() }}">&laquo; {{ __('Back') }}</a>
                   <button type="submit" class="btn btn-success">
                     {{ __('Create') }}
                   </button>
