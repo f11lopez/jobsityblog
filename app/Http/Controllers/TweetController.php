@@ -49,7 +49,7 @@ class TweetController extends Controller
   public function show($id)
   {
     // Get tweet
-    $aTweet = $this->getTweetByID($id);
+    $aTweet = $this->getTweetByID($id);    
     return view('tweet.show', [
       'tweet' => $aTweet
     ]);
